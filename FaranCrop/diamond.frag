@@ -16,8 +16,8 @@
 // Define things
 #define pi 3.14159265358
 
-#define xrotated (cos(rad) * (vTexCoord.x - anch_x * 0.01) - sin(rad) * (vTexCoord.y - anch_y * 0.01) + anch_x * 0.01)
-#define yrotated (sin(rad) * (vTexCoord.x - anch_x * 0.01) + cos(rad) * (vTexCoord.y - anch_y * 0.01) + anch_y * 0.01)
+#define xrotated (cos(-rad) * (vTexCoord.x - anch_x * 0.01) - sin(-rad) * (vTexCoord.y - anch_y * 0.01) + anch_x * 0.01)
+#define yrotated (sin(-rad) * (vTexCoord.x - anch_x * 0.01) + cos(-rad) * (vTexCoord.y - anch_y * 0.01) + anch_y * 0.01)
 
 // Still not work
 uniform
@@ -44,12 +44,12 @@ uniform
 		invert;
 
 uniform mediump float amount_val;
-uniform sampler2D myTexture;
+uniform sampler2D tex;
 varying vec2 vTexCoord;
 
 void main(void) {
 	vec4
-		textureColor = texture2D(myTexture, vec2(vTexCoord.x, vTexCoord.y));
+		textureColor = texture2D(tex, vec2(vTexCoord.x, vTexCoord.y));
 	
 	float
 		alpha = textureColor.a,
